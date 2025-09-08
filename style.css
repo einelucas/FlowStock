@@ -1,0 +1,685 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.6;
+  color: #eee;
+  background: linear-gradient(180deg, #141e30 0%, #35577d 100%);
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+/* Oculta scrollbar */
+.menu::-webkit-scrollbar {
+  display: none;
+}
+
+/* Sliding Menu */
+.menu {
+  position: fixed;
+  top: 0;
+  right: -260px; /* escondido inicialmente no mobile */
+  width: 85px;
+  height: 100%;
+  background: #ffffff12;
+  backdrop-filter: blur(5px);
+  box-shadow: 8px 0px 9px 0px #00000014;
+  padding: 20px 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  transition: right 0.3s ease, width 0.3s ease;
+  z-index: 2000;
+}
+
+/* Quando ativo (mobile: desliza da direita) */
+.menu.active {
+  right: 0;
+}
+
+/* Conteúdo do menu */
+.menu-content {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-content li {
+  border-radius: 0 50px 50px 0;
+  transition: 0.3s;
+  margin-bottom: 20px;
+  padding-left: 10px;
+}
+
+.menu-content li:hover {
+  background: #0c0c0c;
+}
+
+.menu-content li span:nth-child(2) {
+  display: none; /* só mostra no hover (desktop) */
+}
+
+.menu-content li a {
+  text-decoration: none;
+  color: rgb(213, 213, 213);
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Ícones */
+.material-symbols-outlined {
+  padding: 10px;
+  font-size: 25px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: #0c0c0c;
+}
+
+/* Ícone hambúrguer */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 6px;
+  z-index: 2100;
+}
+
+.menu-toggle span {
+  width: 28px;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+}
+
+/* Mobile: mostra menu e hamburguer */
+@media (max-width: 768px) {
+  .menu {
+    width: 260px; /* abre cheio direto no mobile */
+  }
+  .menu-content li span:nth-child(2) {
+    display: inline; /* mostra textos no mobile */
+  }
+  .menu-toggle {
+    display: flex;
+  }
+  .desktop-nav {
+    display: none;
+  }
+}
+
+/* Desktop: esconde menu e hambúrguer completamente */
+@media (min-width: 769px) {
+  .menu,
+  .menu-toggle {
+    display: none !important;
+  }
+}
+
+.header {
+  background: #141e30;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  border-radius: 0 0 15px 15px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header section {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+  align-items: center;
+}
+
+.nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.nav a:hover {
+  color: #0066ff;
+}
+
+/* Container geral */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  padding: 5rem 0; /* só padding vertical */
+  flex-wrap: wrap; /* responsivo */
+  text-align: left;
+  max-width: 1200px; /* alinhamento com o container */
+  margin: 0 auto; /* centraliza horizontalmente */
+}
+
+.hero-text {
+  flex: 1 1 400px; /* ocupa espaço mínimo de 400px e cresce se houver espaço */
+}
+
+.hero-text h1 {
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  max-width: 500px;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  margin: 1rem 0 2rem;
+  color: #b1a2a2;
+}
+
+.hero-img {
+  flex: 1 1 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-img .illustration {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.hero-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn.primary {
+  background: linear-gradient(90deg, #7b3ff2, #3a86ff);
+  color: white;
+}
+
+.btn.primary:hover {
+  background: linear-gradient(90deg, #9c6bff, #5a9fff);
+  box-shadow: 0 4px 12px rgba(123, 63, 242, 0.6);
+  transform: scale(1.05);
+}
+
+.btn.secondary {
+  background: transparent;
+  color: #7b3ff2;
+  border: 2px solid #7b3ff2;
+}
+
+.btn.secondary:hover {
+  background-color: #8657e2;
+  box-shadow: 0 4px 12px rgba(62, 106, 252, 0.6);
+  transform: scale(1.05);
+  color: white;
+}
+
+/* Funcionalidades */
+.features {
+  text-align: center;
+  padding: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.features h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: left; /* 🔹 alterado de center para left */
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: #f5f5ff;
+  color: #333;
+  padding: 2rem;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 20px rgba(123, 63, 242, 0.25);
+  font-weight: 500;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Círculo atrás do ícone */
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+/* Ícone dentro do círculo */
+.icon-circle .icon {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  display: flex;
+  justify-content: center;
+}
+
+h2 {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Por que escolher o FlowStock? */
+.why-choose {
+  text-align: center;
+  padding: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.why-choose h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: left; /* 🔹 alterado */
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.choose-card {
+  background: #f5f5ff;
+  color: #333;
+  padding: 2rem;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 20px rgba(123, 63, 242, 0.25);
+  font-weight: 500;
+}
+
+.choose-card h3 {
+  margin-bottom: 1rem;
+}
+
+.choose-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Planos */
+.plans {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.plans h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: left; /* 🔹 adicionado */
+}
+
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.plan-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  color: #333;
+}
+
+.plan-card:hover {
+  transform: translateY(-5px);
+}
+
+.price {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+  color: #333;
+}
+
+.price .big {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #0066ff;
+}
+
+.btn.subscribe {
+  background: #0066ff;
+  color: white;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.btn.subscribe:hover {
+  background-color: #4fbe58;
+  box-shadow: 0 4px 12px rgba(123, 63, 242, 0.6);
+  transform: scale(1.05);
+}
+
+/* Depoimentos */
+.testimonials {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.testimonials h2 {
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  color: #fff; /* cor semelhante ao título da imagem */
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.testimonial-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 2rem;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* mantém a imagem no mesmo lugar */
+  min-height: 250px; /* opcional: garante altura mínima para todos os cards */
+}
+
+.testimonial-card .quote {
+  width: 30px;
+  height: auto;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  opacity: 1; /* opcional, para que fique bem visível */
+  filter: invert(0); /* remove o invert (se tiver) */
+  /* se a imagem for branca, podemos forçar preto assim: */
+  filter: brightness(0) saturate(100%);
+}
+
+.testimonial-card p {
+  margin-top: 2rem; /* espaço para a imagem */
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+  flex-grow: 1; /* o texto ocupa o espaço disponível */
+  margin-bottom: 1.5rem;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: auto; /* empurra a imagem para o fim do card */
+}
+
+.user-info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-info .stars {
+  color: #ffb400; /* amarelo ouro */
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+}
+
+.user-info div strong {
+  display: block;
+  font-weight: 600;
+  color: #222;
+}
+
+.user-info div span {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.final-cta {
+  background-color: #1a2a40; /* tom escuro mais suave */
+  text-align: center;
+  padding: 4rem 2rem;
+  border-radius: 15px;
+  margin: 4rem 0;
+  color: #fff;
+  border: 1px solid #7b3ff2;
+}
+
+.final-cta h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+}
+
+.final-cta p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #f0f0f0;
+}
+
+.final-cta .cta-btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  background: linear-gradient(90deg, #7b3ff2, #3a86ff);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.final-cta .cta-btn:hover {
+  background: linear-gradient(
+    90deg,
+    #9c6bff,
+    #5a9fff
+  ); /* gradiente alternativo */
+  box-shadow: 0 4px 12px rgba(123, 63, 242, 0.6);
+  transform: scale(1.05);
+}
+
+/* Footer */
+.footer {
+  background: #111;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 15px 15px 0 0;
+}
+
+.footer section {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-logo img {
+  height: 40px; /* mesmo tamanho da header */
+  width: auto;
+  display: block;
+}
+
+.footer-center a,
+.footer-right a {
+  color: #aaa;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+.footer-center a:hover,
+.footer-right a:hover {
+  color: white;
+}
+
+.footer-right a img {
+  width: 25px; /* ajusta o tamanho do ícone */
+  height: auto;
+  margin: 0 0.2rem;
+  transition: transform 0.2s ease, filter 0.3s ease;
+
+  /* cor inicial igual aos links (#aaa) */
+  filter: brightness(0) invert(0.7);
+}
+
+.footer-right a img:hover {
+  /* cor igual ao hover dos links (branco) */
+  filter: brightness(0) invert(1);
+  transform: scale(1.2);
+}
+
+/* =========================
+   Hero Responsiva
+========================= */
+
+/* Mobile pequeno (até 480px) */
+@media (max-width: 480px) {
+  .hero {
+    flex-direction: column; /* empilha os elementos */
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .hero-text h1 {
+    font-size: 1.8rem;
+    max-width: 100%;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  .hero-img {
+    flex: 1 1 100%;
+  }
+}
+
+/* Tablets (481px a 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .hero {
+    flex-direction: column; /* mantém empilhado */
+    text-align: center;
+    gap: 2.5rem;
+  }
+
+  .hero-text h1 {
+    font-size: 2.2rem;
+    max-width: 100%;
+  }
+
+  .hero-text p {
+    font-size: 1.1rem;
+  }
+
+  .hero-img {
+    flex: 1 1 100%;
+  }
+}
+
+/* =========================
+   Footer Responsivo
+========================= */
+
+/* Mobile pequeno (até 480px) */
+@media (max-width: 480px) {
+  .footer section {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    margin: 0.5rem 0;
+  }
+}
+
+/* Tablets (481px a 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .footer section {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    margin: 0.5rem 0;
+  }
+}
+
+/* Footer mobile: links em coluna */
+@media (max-width: 768px) {
+  .footer-center {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* espaço entre os links */
+    align-items: center; /* centraliza horizontalmente */
+  }
+}
